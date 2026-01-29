@@ -1,0 +1,89 @@
+### MOD KEY
+set $mod Mod4
+
+### TERMINAL
+set $term alacritty
+
+### APP LAUNCHER
+set $menu wofi --show drun
+
+### WORKSPACES
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+### WALLPAPER
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+### APPEARANCE
+gaps inner 6
+gaps outer 3
+default_border pixel 2
+focus_follows_mouse no
+
+### STARTUP (SAFE)
+exec_always --no-startup-id bash -c 'pgrep waybar || waybar'
+exec_always --no-startup-id bash -c 'pgrep wl-paste || wl-paste --type text --watch clipman store'
+exec_always --no-startup-id bash -c 'command -v /usr/libexec/kf6/polkit-kde-authentication-agent-1 && /usr/libexec/kf6/polkit-kde-authentication-agent-1'
+
+### KEYBINDINGS
+
+# Terminal
+bindsym $mod+Return exec $term
+
+# Launcher
+bindsym $mod+d exec $menu
+
+# Kill window
+bindsym $mod+Shift+q kill
+
+# Exit Sway safely
+bindsym $mod+Shift+Escape exec swaynag -t warning -m "Exit Sway?" -B "Yes" "swaymsg exit"
+
+# Focus movement (vim style)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+# Resize mode
+mode "resize" {
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Volume keys
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Brightness keys
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+

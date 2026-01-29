@@ -1,0 +1,62 @@
+{
+  "layer": "top",
+  "position": "top",
+
+  "modules-left": ["sway/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "battery",
+    "custom/performance",
+    "tray"
+  ],
+
+  "sway/workspaces": {
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": ""
+    }
+  },
+
+  "clock": {
+    "format": " {:%Y-%m-%d}   {:%H:%M}"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["","","","",""],
+    "format-charging": " {capacity}%"
+  },
+
+  "network": {
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "󰈀 LAN",
+    "format-disconnected": "⚠ Offline"
+  },
+
+  "bluetooth": {
+    "format": " {status}"
+  },
+
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": ""
+  },
+
+  "custom/performance": {
+    "exec": "tuned-adm active | awk '{print $4}'",
+    "interval": 20,
+    "format": " {}",
+    "on-click": "pkexec tuned-adm profile performance",
+    "on-click-right": "pkexec tuned-adm profile balanced",
+    "on-click-middle": "pkexec tuned-adm profile powersave"
+  }
+}
+
