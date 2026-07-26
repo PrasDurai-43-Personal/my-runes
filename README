@@ -1,0 +1,99 @@
+# runes
+
+> *எழுத்து என்பது ஒரு வாளை விட கூர்மையானது*
+> "The written word is sharper than a sword."
+
+Personal dotfiles and system configuration — Fedora 43 KDE · Sway · Wayland.
+
+---
+
+## Structure
+
+```
+runes/
+├── dotfiles/
+│   └── nvim/                   # Neovim — Lazy.nvim, LSP, Treesitter, Telescope
+│       ├── init.lua
+│       ├── lazy-lock.json
+│       └── lua/
+│           ├── config/         # keybinds, lazy, options
+│           └── plugins/        # autopairs, cmp, colors, explorer,
+│                               # lsp, telescope, treesitter
+├── kde/
+│   └── konsole/                # Konsole terminal — Monokai colorscheme
+│       ├── Monokai.colorscheme
+│       └── Monokai_JetBrain.profile
+└── sway/                       # Sway WM + Waybar
+    ├── sway_config.txt
+    ├── waybar_config.txt
+    ├── style.css
+    └── net-speed.txt
+```
+
+---
+
+## System
+
+| Component | Choice |
+|-----------|--------|
+| OS | Fedora 43 KDE |
+| Compositor | Sway (Wayland) |
+| Terminal | Konsole |
+| Shell prompt | Starship |
+| Editor | Neovim |
+| Colorscheme | Monokai |
+
+---
+
+## Neovim Plugins
+
+| Plugin | Purpose |
+|--------|---------|
+| Lazy.nvim | Plugin manager |
+| nvim-lspconfig | LSP client |
+| nvim-treesitter | Syntax & parsing |
+| telescope.nvim | Fuzzy finder |
+| nvim-cmp | Completion engine |
+| nvim-autopairs | Auto bracket pairs |
+| nvim-tree | File explorer |
+
+---
+
+## Setup
+
+Clone into your home:
+
+```bash
+git clone git@github.com:PrasDurai-43-Personal/runes.git ~/<Your-Directory>
+```
+
+Symlink what you need:
+
+```bash
+# Neovim
+ln -sf ~/<Your-Directory>/runes/dotfiles/nvim ~/.config/nvim
+
+# Sway
+ln -sf ~/<Your-Directory>/runes/sway/sway_config.txt ~/.config/sway/config
+
+# Waybar
+ln -sf ~/<Your-Directory>/runes/sway/waybar_config.txt ~/.config/waybar/config
+ln -sf ~/<Your-Directory>/runes/sway/style.css ~/.config/waybar/style.css
+
+# Starship
+ln -sf ~/<Your-Directory>/runes/dotfiles/starship/starship.toml ~/.config/starship.toml
+```
+
+---
+
+## Philosophy
+
+*Warrior's heart. Professional's mind.*
+
+These are not just config files — they are the accumulated inscriptions of a craftsman's environment. Each line is deliberate.
+
+---
+
+## License
+
+MIT — use freely, sharpen your own runes.
